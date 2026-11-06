@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Cylinder Selection</title>
+</head>
+<body>
+    <h2>Debug Cylinder Selection</h2>
+    <p>Click the buttons below to test cylinder selection:</p>
+    
+    <div onclick="testSelectCylinder('14.2kg Domestic', 850, event)" style="padding: 10px; margin: 5px; background: #f0f0f0; cursor: pointer; border: 1px solid #ccc;">
+        Test Cylinder 1: 14.2kg Domestic (₹850)
+    </div>
+    
+    <div onclick="testSelectCylinder('19kg Commercial', 950, event)" style="padding: 10px; margin: 5px; background: #f0f0f0; cursor: pointer; border: 1px solid #ccc;">
+        Test Cylinder 2: 19kg Commercial (₹950)
+    </div>
+    
+    <div id="result" style="margin-top: 20px; padding: 10px; background: #e8f5e8;"></div>
+    
+    <script>
+        function testSelectCylinder(cylinderType, price, event) {
+            console.log('testSelectCylinder called with:', cylinderType, price, event);
+            
+            const result = document.getElementById('result');
+            result.innerHTML = `
+                <strong>Function Called Successfully!</strong><br>
+                Cylinder Type: ${cylinderType}<br>
+                Price: ₹${price}<br>
+                Event Object: ${event ? 'Available' : 'Not available'}<br>
+                Target Element: ${event && event.currentTarget ? event.currentTarget.textContent : 'None'}
+            `;
+            
+            if (event && event.currentTarget) {
+                event.currentTarget.style.backgroundColor = '#90EE90';
+            }
+        }
+        
+        // Test if we can access the main page functions
+        setTimeout(() => {
+            if (window.parent && window.parent.selectCylinder) {
+                console.log('selectCylinder function found in parent window');
+            } else {
+                console.log('selectCylinder function NOT found');
+            }
+        }, 1000);
+    </script>
+    
+    <p><a href="customer-portal.php">Back to Customer Portal</a></p>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms of Service | LIAA LPG Gas Booking</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #ff6b00;
+      --primary-light: #ff8533;
+      --secondary: #2c3e50;
+      --accent: #3498db;
+      --light: #ecf0f1;
+      --dark: #2c3e50;
+      --white: #fff;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+      --border-radius: 16px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #fff7ed 50%, #f1f5f9 100%);
+      color: var(--dark);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    /* Floating blurred background shapes */
+    .floating-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .float-1 {
+      position: absolute;
+      top: 10%; left: 10%;
+      width: 18rem; height: 18rem;
+      background: rgba(255, 107, 0, 0.12);
+      border-radius: 50%;
+      filter: blur(3rem);
+      animation: floatPulse 7s ease-in-out infinite;
+    }
+    .float-2 {
+      position: absolute;
+      top: 70%; right: 10%;
+      width: 14rem; height: 14rem;
+      background: rgba(255, 183, 77, 0.13);
+      border-radius: 50%;
+      filter: blur(2.5rem);
+      animation: floatPulse 9s ease-in-out infinite 2s;
+    }
+    .float-3 {
+      position: absolute;
+      top: 40%; left: 70%;
+      width: 10rem; height: 10rem;
+      background: rgba(52, 152, 219, 0.10);
+      border-radius: 50%;
+      filter: blur(2rem);
+      animation: floatPulse 11s ease-in-out infinite 1s;
+    }
+    @keyframes floatPulse {
+      0%, 100% { transform: scale(1) translateY(0); opacity: 0.7; }
+      50% { transform: scale(1.1) translateY(-20px); opacity: 1; }
+    }
+    header {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      padding: 1.2rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .logo i {
+      font-size: 2rem;
+      margin-right: 0.5rem;
+      animation: flame 2s ease-in-out infinite alternate;
+    }
+    @keyframes flame {
+      0% { transform: scale(1) rotate(-2deg); filter: drop-shadow(0 0 0px #ffb347); }
+      100% { transform: scale(1.1) rotate(2deg); filter: drop-shadow(0 0 12px #ffb347); }
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    nav a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0.2rem;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      border-radius: 2px;
+      transition: width 0.3s, left 0.3s;
+    }
+    nav a:hover,
+    nav a.active {
+      color: var(--primary);
+      background: rgba(255, 107, 0, 0.1);
+    }
+    nav a:hover::after,
+    nav a.active::after {
+      width: 80%;
+      left: 10%;
+    }
+    .hero {
+      background: linear-gradient(120deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: var(--white);
+      padding: 5rem 0 3rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      animation: heroGradient 8s ease-in-out infinite alternate;
+    }
+    @keyframes heroGradient {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    .hero .flame-anim {
+      display: inline-block;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      animation: flame 2s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 10px #fff7ed);
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s 0.2s forwards;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0;
+      max-width: 700px;
+      margin: 0 auto;
+      transform: translateY(30px);
+      animation: fadeInUp 1s 0.5s forwards;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .terms-container {
+      max-width: 900px;
+      margin: -3rem auto 3rem auto;
+      background: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 3rem 2.5rem;
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1.2s;
+      transition: box-shadow 0.3s;
+    }
+    .terms-section {
+      background: rgba(255,255,255,0.95);
+      border-radius: 1.2rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 2.2rem;
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      position: relative;
+      opacity: 0;
+      transform: translateY(60px) scale(0.97);
+      transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s;
+      will-change: opacity, transform;
+      z-index: 1;
+    }
+    .terms-section.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      box-shadow: var(--shadow-hover);
+    }
+    .terms-section:hover {
+      box-shadow: 0 20px 40px rgba(255, 107, 0, 0.13);
+      transform: translateY(-4px) scale(1.02);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .section-badge {
+      position: absolute;
+      left: -1.5rem;
+      top: 1.5rem;
+      width: 2.7rem;
+      height: 2.7rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(255,107,0,0.13);
+      z-index: 2;
+      animation: badgePop 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    @keyframes badgePop {
+      0% { transform: scale(0.5); opacity: 0; }
+      80% { transform: scale(1.15); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    .terms-container h2 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      transition: color 0.3s;
+      padding-left: 2.5rem;
+    }
+    .terms-container h3 {
+      color: var(--accent);
+      font-size: 1.15rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .terms-container p, .terms-container ul, .terms-container li {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #444;
+    }
+    .terms-container ul {
+      margin: 1rem 0 1rem 2rem;
+      list-style: disc;
+    }
+    .terms-container li {
+      margin-bottom: 0.5rem;
+    }
+    .terms-container strong {
+      color: var(--primary);
+    }
+    a {
+      color: var(--accent);
+      text-decoration: underline;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    a:hover {
+      color: var(--primary);
+      text-shadow: 0 2px 8px #ffb34744;
+    }
+    footer {
+      background: var(--dark);
+      color: var(--white);
+      padding: 2rem 0 1rem;
+      margin-top: 4rem;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1rem;
+      color: rgba(255,255,255,0.6);
+    }
+    @media (max-width: 900px) {
+      .terms-container { padding: 2rem 0.5rem; }
+      .section-badge { left: -1rem; }
+      .terms-container h2 { padding-left: 2rem; }
+    }
+    @media (max-width: 768px) {
+      .header-container, .terms-container, .footer-container { padding: 0 1rem; }
+      .terms-container { padding: 2rem 0.2rem; }
+      .hero h1 { font-size: 2rem; }
+      .section-badge { left: -0.7rem; top: 1rem; width: 2.1rem; height: 2.1rem; font-size: 1rem; }
+      .terms-container h2 { padding-left: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-bg">
+    <div class="float-1"></div>
+    <div class="float-2"></div>
+    <div class="float-3"></div>
+  </div>
+  <header>
+    <div class="header-container">
+      <a href="Home.html" class="logo">
+        <i class="fas fa-fire"></i>
+        LIAA LPG
+      </a>
+      <nav>
+        <ul>
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacypolicy.html">Privacy Policy</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section class="hero">
+    <span class="flame-anim"><i class="fas fa-fire"></i></span>
+    <h1>Terms of Service</h1>
+    <p>By using LIAA LPG Gas Booking, you agree to these terms. Please read them carefully.</p>
+  </section>
+  <div class="terms-container">
+    <div class="terms-section"><span class="section-badge">1</span>
+      <h2>1. Acceptance of Terms</h2>
+      <p>By accessing or using our website and services, you agree to comply with these Terms of Service and all applicable laws.</p>
+    </div>
+    <div class="terms-section"><span class="section-badge">2</span>
+      <h2>2. User Accounts</h2>
+      <ul>
+        <li>You must provide accurate and complete information during registration.</li>
+        <li>You are responsible for maintaining the confidentiality of your account and password.</li>
+        <li>Notify us immediately of any unauthorized use of your account.</li>
+      </ul>
+    </div>
+    <div class="terms-section"><span class="section-badge">3</span>
+      <h2>3. Service Usage</h2>
+      <ul>
+        <li>Our services are for personal, non-commercial use unless otherwise agreed.</li>
+        <li>Do not misuse our services or attempt to disrupt our systems.</li>
+        <li>All bookings are subject to availability and verification.</li>
+      </ul>
+    </div>
+    <div class="terms-section"><span class="section-badge">4</span>
+      <h2>4. Payments & Refunds</h2>
+      <ul>
+        <li>All payments must be made through approved methods.</li>
+        <li>Refunds are processed as per our refund policy. Contact support for details.</li>
+      </ul>
+    </div>
+    <div class="terms-section"><span class="section-badge">5</span>
+      <h2>5. Safety & Compliance</h2>
+      <ul>
+        <li>Follow all safety instructions provided with LPG cylinders.</li>
+        <li>We are not liable for misuse or unauthorized handling of cylinders.</li>
+      </ul>
+    </div>
+    <div class="terms-section"><span class="section-badge">6</span>
+      <h2>6. Intellectual Property</h2>
+      <p>All content, logos, and trademarks on this site are the property of LIAA LPG or its licensors. Do not copy or use without permission.</p>
+    </div>
+    <div class="terms-section"><span class="section-badge">7</span>
+      <h2>7. Limitation of Liability</h2>
+      <p>LIAA LPG is not liable for indirect, incidental, or consequential damages arising from your use of our services.</p>
+    </div>
+    <div class="terms-section"><span class="section-badge">8</span>
+      <h2>8. Changes to Terms</h2>
+      <p>We may update these Terms of Service at any time. Continued use of our services constitutes acceptance of the new terms.</p>
+    </div>
+    <div class="terms-section"><span class="section-badge">9</span>
+      <h2>9. Governing Law</h2>
+      <p>These terms are governed by the laws of Kerala, India.</p>
+    </div>
+    <div class="terms-section"><span class="section-badge">10</span>
+      <h2>10. Contact</h2>
+      <p>For questions about these terms, contact us at <a href="mailto:info@liaalpg.com">info@liaalpg.com</a> or call 0481-123-4567.</p>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-bottom">
+        <p>&copy; 2025 LIAA LPG Gas Booking System. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // Animate terms sections on scroll with stagger
+    function animateSections() {
+      const sections = document.querySelectorAll('.terms-section');
+      const triggerBottom = window.innerHeight * 0.92;
+      let delay = 0;
+      sections.forEach((section, idx) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < triggerBottom) {
+          setTimeout(() => section.classList.add('visible'), delay);
+          delay += 120;
+        }
+      });
+    }
+    // Intersection Observer for smooth reveal
+    const observer = new window.IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.terms-section').forEach(section => {
+      observer.observe(section);
+    });
+    window.addEventListener('scroll', animateSections);
+    window.addEventListener('load', animateSections);
+  </script>
+</body>
+</html>

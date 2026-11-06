@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Under Maintenance | LIAA LPG</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --flame-orange: #FF6B35;
+      --flame-red: #F7931E;
+      --deep-navy: #1a1f36;
+      --pure-white: #ffffff;
+      --glass-white: rgba(255, 255, 255, 0.1);
+      --shadow-soft: 0 8px 32px rgba(26, 31, 54, 0.12);
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--flame-orange), var(--flame-red));
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--pure-white);
+      overflow: hidden;
+    }
+
+    /* Floating particles effect */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 20%, rgba(255, 107, 53, 0.3) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(247, 147, 30, 0.3) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .maintenance-container {
+      background: var(--glass-white);
+      backdrop-filter: blur(25px);
+      padding: 3rem;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .maintenance-icon {
+      font-size: 4rem;
+      color: var(--pure-white);
+      margin-bottom: 1.5rem;
+    }
+
+    .maintenance-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--pure-white), rgba(255, 255, 255, 0.8));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .maintenance-message {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .maintenance-status {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .maintenance-status p {
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .contact-info {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .contact-info a {
+      color: var(--pure-white);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .contact-info a:hover {
+      color: var(--flame-orange);
+    }
+
+    .admin-link {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--pure-white);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+
+    .admin-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .maintenance-container {
+        padding: 2rem;
+        margin: 1rem;
+      }
+      
+      .maintenance-title {
+        font-size: 2rem;
+      }
+      
+      .maintenance-icon {
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="maintenance-container">
+    <div class="maintenance-icon">
+      <i class="fas fa-tools"></i>
+    </div>
+    
+    <h1 class="maintenance-title">System Under Maintenance</h1>
+    
+    <div class="maintenance-message">
+      <p>We're currently performing scheduled maintenance to improve our services. 
+         The system will be back online shortly.</p>
+    </div>
+    
+    <div class="maintenance-status">
+      <p><i class="fas fa-clock"></i> Started: <?php echo date('F j, Y g:i A'); ?></p>
+      <p><i class="fas fa-info-circle"></i> Expected completion: Within 1 hour</p>
+    </div>
+    
+    <div class="contact-info">
+      <p>For urgent inquiries, please contact:</p>
+      <p><i class="fas fa-envelope"></i> <a href="mailto:admin@lia.com">admin@lia.com</a></p>
+      <p><i class="fas fa-phone"></i> <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+    </div>
+  </div>
+  
+  <a href="admin-portal.php" class="admin-link">
+    <i class="fas fa-shield-alt"></i> Admin Access
+  </a>
+</body>
+</html>

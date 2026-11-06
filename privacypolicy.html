@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | LIAA LPG Gas Booking</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f8fafc 0%, rgba(255, 247, 237, 0.3) 50%, #f1f5f9 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Floating Background Elements */
+        .floating-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .float-1 {
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 24rem;
+            height: 24rem;
+            background: rgba(254, 215, 170, 0.2);
+            border-radius: 50%;
+            filter: blur(3rem);
+            animation: pulseSlow 4s ease-in-out infinite;
+        }
+
+        .float-2 {
+            position: absolute;
+            top: 75%;
+            right: 25%;
+            width: 20rem;
+            height: 20rem;
+            background: rgba(254, 240, 138, 0.2);
+            border-radius: 50%;
+            filter: blur(3rem);
+            animation: pulseSlow 6s ease-in-out infinite 1s;
+        }
+
+        .float-3 {
+            position: absolute;
+            top: 50%;
+            left: 75%;
+            width: 16rem;
+            height: 16rem;
+            background: rgba(254, 202, 202, 0.2);
+            border-radius: 50%;
+            filter: blur(3rem);
+            animation: pulseSlow 8s ease-in-out infinite 2s;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(254, 215, 170, 0.5);
+            z-index: 50;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #f97316, #fb923c);
+            transition: width 0.3s ease-out;
+            width: 0%;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(254, 215, 170, 0.5);
+            box-shadow: 0 20px 25px -5px rgba(249, 115, 22, 0.05);
+        }
+
+        .header-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .logo-container {
+            position: relative;
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-glow {
+            position: absolute;
+            inset: 0;
+            background: rgba(249, 115, 22, 0.2);
+            border-radius: 50%;
+            filter: blur(16px);
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #ea580c, #f97316, #fb923c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .nav {
+            display: none;
+            gap: 0.5rem;
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 0.75rem 1.5rem;
+            color: #334155;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 0.75rem;
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+            color: #ea580c;
+            background: rgba(249, 115, 22, 0.05);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0.25rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #f97316, #fb923c);
+            border-radius: 9999px;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link:hover::after {
+            width: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ea580c 0%, #f97316 50%, #fb923c 100%);
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-float-1 {
+            position: absolute;
+            top: 5rem;
+            left: 2.5rem;
+            width: 8rem;
+            height: 8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            filter: blur(1.5rem);
+            animation: floatGentle 8s ease-in-out infinite;
+        }
+
+        .hero-float-2 {
+            position: absolute;
+            top: 10rem;
+            right: 5rem;
+            width: 6rem;
+            height: 6rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            filter: blur(1rem);
+            animation: floatGentle 8s ease-in-out infinite 2s;
+        }
+
+        .hero-float-3 {
+            position: absolute;
+            bottom: 5rem;
+            left: 33.333333%;
+            width: 10rem;
+            height: 10rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            filter: blur(2rem);
+            animation: floatSlow 12s ease-in-out infinite;
+        }
+
+        .hero-float-4 {
+            position: absolute;
+            top: 50%;
+            right: 33.333333%;
+            width: 5rem;
+            height: 5rem;
+            background: rgba(254, 240, 138, 0.2);
+            border-radius: 50%;
+            filter: blur(1rem);
+            animation: floatReverse 10s ease-in-out infinite 1s;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            background-image: url('data:image/svg+xml,%3Csvg width%3D%2280%22 height%3D%2280%22 viewBox%3D%220 0 80 80%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg fill%3D%22none%22 fillRule%3D%22evenodd%22%3E%3Cg fill%3D%22%23ffffff%22 fillOpacity%3D%220.1%22%3E%3Ccircle cx%3D%2240%22 cy%3D%2240%22 r%3D%223%22%2F%3E%3Cpath d%3D%22M40 0v80M0 40h80%22 stroke%3D%22%23ffffff%22 strokeOpacity%3D%220.05%22 strokeWidth%3D%221%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 6rem 1.5rem;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-badge:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-title {
+            font-size: 3.75rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 2rem;
+            line-height: 1.25;
+        }
+
+        .hero-title-gradient {
+            display: block;
+            background: linear-gradient(to right, #fef08a, #fed7aa, #fde047);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: #fed7aa;
+            max-width: 48rem;
+            margin: 0 auto 2rem auto;
+            line-height: 1.625;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .hero-highlight {
+            color: #fef08a;
+            font-weight: 600;
+        }
+
+        .hero-divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-line {
+            width: 8rem;
+            height: 4px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.6), transparent);
+            border-radius: 9999px;
+        }
+
+        .hero-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .hero-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Main Content */
+        .main-content {
+            position: relative;
+            margin-top: -4rem;
+            z-index: 10;
+        }
+
+        .content-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(4px);
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(249, 115, 22, 0.1);
+            border: 1px solid rgba(254, 215, 170, 0.5);
+            overflow: hidden;
+        }
+
+        .content-header {
+            background: linear-gradient(to right, #fff7ed, rgba(254, 215, 170, 0.5), #fff7ed);
+            padding: 2rem;
+            border-bottom: 1px solid rgba(254, 215, 170, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-header-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 8rem;
+            height: 8rem;
+            background: rgba(254, 215, 170, 0.2);
+            border-radius: 50%;
+            filter: blur(2rem);
+        }
+
+        .content-header-inner {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .content-icon {
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .content-icon:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .content-date {
+            color: #475569;
+        }
+
+        .status-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .status-text {
+            color: #16a34a;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .content-body {
+            padding: 2.5rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-number {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section-number:hover {
+            transform: scale(1.1);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #1e293b;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section:hover .section-title {
+            color: #ea580c;
+        }
+
+        .section-divider {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(254, 215, 170, 1), transparent);
+        }
+
+        .section-description {
+            color: #475569;
+            font-size: 1.125rem;
+            line-height: 1.625;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(249, 115, 22, 0.1);
+        }
+
+        .info-card-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5rem;
+            height: 5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            filter: blur(1.5rem);
+        }
+
+        .info-icon {
+            position: relative;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .info-card:hover .info-icon {
+            transform: scale(1.1);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-title {
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+        }
+
+        .info-text {
+            color: #475569;
+            line-height: 1.625;
+        }
+
+        .section-card {
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-card-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 8rem;
+            height: 8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            filter: blur(2rem);
+        }
+
+        .section-content {
+            position: relative;
+        }
+
+        .list {
+            list-style: none;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .list-item:hover .list-dot {
+            transform: scale(1.25);
+        }
+
+        .list-dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            border-radius: 50%;
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .list-text {
+            color: #334155;
+            font-size: 1.125rem;
+            line-height: 1.625;
+        }
+
+        .security-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .security-icon {
+            width: 3rem;
+            height: 3rem;
+            background: #22c55e;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .security-text {
+            color: #334155;
+            font-size: 1.125rem;
+            line-height: 1.625;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+            border-radius: 0.75rem;
+            border: 1px solid rgba(191, 219, 254, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1);
+        }
+
+        .contact-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .contact-card:hover .contact-icon {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-label {
+            color: #475569;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .contact-value {
+            color: #1e293b;
+            font-weight: 600;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .contact-card:hover .contact-value {
+            color: #2563eb;
+        }
+
+        .contact-card:hover .contact-value.phone {
+            color: #16a34a;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 6rem;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(249, 115, 22, 0.5), transparent);
+        }
+
+        .footer-content {
+            position: relative;
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-container {
+            position: relative;
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-logo-glow {
+            position: absolute;
+            inset: 0;
+            background: rgba(249, 115, 22, 0.3);
+            border-radius: 50%;
+            filter: blur(16px);
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .footer-logo-text {
+            font-size: 1.875rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #fb923c, #fed7aa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-logo-subtitle {
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        .footer-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #475569, transparent);
+            margin-bottom: 2rem;
+        }
+
+        .footer-copyright {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-star {
+            width: 1rem;
+            height: 1rem;
+            color: #fb923c;
+        }
+
+        .footer-text {
+            color: #94a3b8;
+        }
+
+        .footer-tagline {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        /* Animations */
+        @keyframes floatGentle {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-15px) translateX(10px) rotate(2deg);
+            }
+            50% {
+                transform: translateY(-25px) translateX(-5px) rotate(-1deg);
+            }
+            75% {
+                transform: translateY(-10px) translateX(-10px) rotate(1deg);
+            }
+        }
+
+        @keyframes floatSlow {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px) scale(1);
+            }
+            33% {
+                transform: translateY(-20px) translateX(15px) scale(1.05);
+            }
+            66% {
+                transform: translateY(-35px) translateX(-10px) scale(0.95);
+            }
+        }
+
+        @keyframes floatReverse {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(30px) translateX(20px) rotate(-5deg);
+            }
+        }
+
+        @keyframes pulseSlow {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .animate-spin-slow {
+            animation: spin 8s linear infinite;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .nav {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 4.5rem;
+            }
+
+            .hero-description {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-description {
+                font-size: 1.125rem;
+            }
+
+            .content-body {
+                padding: 2rem 1rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .section-divider {
+                display: none;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Color Classes */
+        .bg-blue-gradient {
+            background: linear-gradient(135deg, #eff6ff, rgba(219, 234, 254, 0.5));
+            border-color: rgba(191, 219, 254, 0.5);
+        }
+
+        .bg-purple-gradient {
+            background: linear-gradient(135deg, #faf5ff, rgba(233, 213, 255, 0.5));
+            border-color: rgba(196, 181, 253, 0.5);
+        }
+
+        .bg-green-gradient {
+            background: linear-gradient(135deg, #f0fdf4, rgba(187, 247, 208, 0.5));
+            border-color: rgba(134, 239, 172, 0.5);
+        }
+
+        .bg-slate-gradient {
+            background: linear-gradient(to right, #f8fafc, rgba(255, 247, 237, 0.3));
+            border-color: rgba(226, 232, 240, 0.5);
+        }
+
+        .bg-red-gradient {
+            background: linear-gradient(135deg, #fef2f2, #fff7ed);
+            border-color: rgba(254, 202, 202, 0.5);
+        }
+
+        .bg-indigo-gradient {
+            background: linear-gradient(to right, #eef2ff, #eff6ff);
+            border-color: rgba(199, 210, 254, 0.5);
+        }
+
+        .bg-yellow-gradient {
+            background: linear-gradient(to right, #fefce8, #fff7ed);
+            border-color: rgba(254, 240, 138, 0.5);
+        }
+
+        .bg-purple-pink-gradient {
+            background: linear-gradient(to right, #faf5ff, #fdf2f8);
+            border-color: rgba(196, 181, 253, 0.5);
+        }
+
+        .bg-blue-indigo-gradient {
+            background: linear-gradient(135deg, #eff6ff, #eef2ff, #faf5ff);
+            border-color: rgba(191, 219, 254, 0.5);
+        }
+
+        .icon-blue {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .icon-purple {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        .icon-green {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .icon-blue-contact {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .icon-green-contact {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .text-highlight {
+            color: #dc2626;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-bg">
+        <div class="float-1"></div>
+        <div class="float-2"></div>
+        <div class="float-3"></div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressBar"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-container">
+                    <div class="logo-glow"></div>
+                    <i data-lucide="flame" style="width: 1.5rem; height: 1.5rem; color: white;"></i>
+                </div>
+                <div>
+                    <div class="logo-text">LIAA LPG</div>
+                    <div class="logo-subtitle">Gas Booking System</div>
+                </div>
+            </div>
+
+            <nav class="nav">
+                <a href="home.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Animated Background Elements -->
+        <div class="hero-float-1"></div>
+        <div class="hero-float-2"></div>
+        <div class="hero-float-3"></div>
+        <div class="hero-float-4"></div>
+
+        <!-- Geometric Pattern -->
+        <div class="hero-pattern"></div>
+
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i data-lucide="shield" style="width: 1.5rem; height: 1.5rem; color: white;"></i>
+                <span style="color: white; font-weight: 600;">Privacy & Security</span>
+                <i data-lucide="sparkles" style="width: 1rem; height: 1rem; color: #fef08a;" class="animate-pulse"></i>
+            </div>
+
+            <h1 class="hero-title">
+                <span class="animate-fade-in-up">Privacy</span>
+                <span class="hero-title-gradient">Policy</span>
+            </h1>
+
+            <p class="hero-description">
+                Your privacy is our <span class="hero-highlight">top priority</span>. Discover how LIAA
+                LPG Gas Booking protects and manages your personal information with complete transparency.
+            </p>
+
+            <div class="hero-divider">
+                <div class="hero-line"></div>
+                <i data-lucide="star" style="width: 1.5rem; height: 1.5rem; color: #fef08a;" class="animate-spin-slow"></i>
+                <div class="hero-line"></div>
+            </div>
+
+            <button onclick="scrollToContent()" class="hero-button">
+                <span>Read Policy</span>
+                <i data-lucide="chevron-down" style="width: 1.25rem; height: 1.25rem;"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="content-container">
+            <div class="content-card">
+                <!-- Content Header -->
+                <div class="content-header">
+                    <div class="content-header-bg"></div>
+                    <div class="content-header-inner">
+                        <div class="content-icon">
+                            <i data-lucide="file-text" style="width: 2rem; height: 2rem; color: white;"></i>
+                        </div>
+                        <div>
+                            <h2 class="content-title">Privacy Policy Details</h2>
+                            <div class="content-meta">
+                                <p class="content-date">Last updated: January 2025</p>
+                                <div class="status-dot"></div>
+                                <span class="status-text">Active</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-body" id="content">
+                    <!-- Section 1 -->
+                    <div class="section">
+                        <div class="section-header">
+                            <div class="section-number">1</div>
+                            <h3 class="section-title">Information We Collect</h3>
+                            <div class="section-divider"></div>
+                        </div>
+
+                        <p class="section-description">
+                            We collect information to provide better services to all our users. This includes:
+                        </p>
+
+                        <div class="info-grid">
+                            <div class="info-card bg-blue-gradient">
+                                <div class="info-card-bg"></div>
+                                <div class="info-icon icon-blue">
+                                    <i data-lucide="users" style="width: 1.5rem; height: 1.5rem; color: white;"></i>
+                                </div>
+                                <h4 class="info-title">Personal Information</h4>
+                                <p class="info-text">Name, address, phone number, email, and payment details.</p>
+                            </div>
+
+                            <div class="info-card bg-purple-gradient">
+                                <div class="info-card-bg"></div>
+                                <div class="info-icon icon-purple">
+                                    <i data-lucide="eye" style="width: 1.5rem; height: 1.5rem; color: white;"></i>
+                                </div>
+                                <h4 class="info-title">Usage Data</h4>
+                                <p class="info-text">Pages visited, actions taken, device information, and IP address.</p>
+                            </div>
+
+                            <div class="info-card bg-green-gradient">
+                                <div class="info-card-bg"></div>
+                                <div class="info-icon icon-green">
+                                    <i data-lucide="file-text" style="width: 1.5rem; height: 1.5rem; color: white;"></i>
+                                </div>
+                                <h4 class="info-title">Cookies</h4>
+                                <p class="info-text">To enhance your experience and analyze site usage.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2 -->
+                    <div class="section">
+                        <div class="section-header">
+                            <div class="section-number">2</div>
+                            <h3 class="section-title">How We Use Your Information</h3>
+                            <div class="section-divider"></div>
+                        </div>
+
+                        <div class="section-card bg-slate-gradient">
+                            <div class="section-card-bg"></div>
+                            <div class="section-content">
+                                <ul class="list">
+                                    <li class="list-item">
+                                        <div class="list-dot"></div>
+                                        <span class="list-text">To process bookings and deliver LPG cylinders.</span>
+                                    </li>
+                                    <li class="list-item">
+                                        <div class="list-dot"></div>
+                                        <span class="list-text">To communicate with you about your orders and account.</span>
+                                    </li>
+                                    <li class="list-item">
+                                        <div class="list-dot"></div>
+                                        <span class="list-text">To improve our services and website.</span>
+                                    </li>
+                                    <li class="list-item">
+                                        <div class="list-dot"></div>
+                                        <span class="list-text">To comply with legal obligations.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 3 -->
+                    <div class="section">
+                        <div class="section-header">
+                            <div class="section-number">3</div>
+                            <h3 class="section-title">Information Sharing</h3>
+                            <div class="section-divider"></div>
+                        </div>
+
+                        <div class="section-card bg-red-gradient">
+                            <div class="section-card-bg"></div>
+                            <div class="section-content">
+                                <p class="section-description">
+                                    We do <span class="text-highlight">not</span> sell or rent your personal information. We may share your data with:
+                                </p>
+                                <ul class="list">
+                                    <li class="list-item">
+                                        <div class="list-dot" style="background: linear-gradient(135deg, #ef4444, #dc2626);"></div>
+                                        <span class="list-text">Trusted delivery personnel for order fulfillment.</span>
+                                    </li>
+                                    <li class="list-item">
+                                        <div class="list-dot" style="background: linear-gradient(135deg, #ef4444, #dc2626);"></div>
+                                        <span class="list-text">Service providers who assist in our operations (e.g., payment gateways).</span>
+                                    </li>
+                                    <li class="list-item">
+                                        <div class="list-dot" style="background: linear-gradient(135deg, #ef4444, #dc2626);"></div>
+                                        <span class="list-text">Authorities if required by law.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 4 -->
+                    <div class="section">
+                        <div class="section-header">
+                            <div class="section-number">4</div>
+                            <h3 class="section-title">Data Security</h3>
+                            <div class="section-divider"></div>
+                        </div>
+
+                        <div class="section-card bg-green-gradient">
+                            <div class="section-card-bg"></div>
+                            <div class="section-content">
+                                <div class="security-section">
+                                    <div class="security-icon">
+                                        <i data-lucide="lock" style="width: 1.5rem; height: 1.5rem; color: white;"></i>
+                                    </div>
+                                    <p class="security-text">
+                                        We use industry-standard security measures to protect your data from unauthorized access, alteration, or disclosure.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 5 -->
+                    <div class="section">
+                        <div class="section-header">
+                            <div class="section-number">5</div>
+                            <h3 class="section-title">Your Rights</h3>
+                            <div class="section-divider"></div>
+                        </div>
+
+                        <div class="section-card bg-indigo-gradient">
+                            <div class="section-card-bg"></div>
+                            <div class="section-content">
+                                <ul class="list">
+                                    <li class="list-item">
+                                        <div class="list-dot"></div>
+                                        <span class="list-text">Access, update, or delete your personal information.</span>
+                                    </li>
+                                    <li class="list-item">
+                                        <div class="list-dot"></div>
+                                        <span class="list-text">Opt out of marketing communications at any time.</span>
+                                    </li>
+                                    <li class="list-item">
+                                        <div class="list-dot"></div>
+                                        <span class="list-text">Request a copy of your data.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 6 -->
+                    <div class="section">
+                        <div class="section-header">
+                            <div class="section-number">6</div>
+                            <h3 class="section-title">Cookies</h3>
+                            <div class="section-divider"></div>
+                        </div>
+
+                        <div class="section-card bg-yellow-gradient">
+                            <div class="section-card-bg"></div>
+                            <div class="section-content">
+                                <p class="security-text">
+                                    We use cookies to personalize your experience and analyze traffic. You can control cookies through your browser settings.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 7 -->
+                    <div class="section">
+                        <div class="section-header">
+                            <div class="section-number">7</div>
+                            <h3 class="section-title">Changes to This Policy</h3>
+                            <div class="section-divider"></div>
+                        </div>
+
+                        <div class="section-card bg-purple-pink-gradient">
+                            <div class="section-card-bg"></div>
+                            <div class="section-content">
+                                <p class="security-text">
+                                    We may update this Privacy Policy from time to time. Changes will be posted on this page with a revised date.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Section -->
+                    <div class="section">
+                        <div class="section-header">
+                            <div class="section-number">8</div>
+                            <h3 class="section-title">Contact Us</h3>
+                            <div class="section-divider"></div>
+                        </div>
+
+                        <div class="section-card bg-blue-indigo-gradient">
+                            <div class="section-card-bg" style="width: 10rem; height: 10rem; background: rgba(59, 130, 246, 0.2); filter: blur(3rem);"></div>
+                            <div class="section-content">
+                                <p class="section-description">
+                                    If you have questions about this policy, don't hesitate to contact us:
+                                </p>
+                                <div class="contact-grid">
+                                    <a href="mailto:info@liaalpg.com" class="contact-card">
+                                        <div class="contact-icon icon-blue-contact">
+                                            <i data-lucide="mail" style="width: 1.5rem; height: 1.5rem; color: white;"></i>
+                                        </div>
+                                        <div>
+                                            <div class="contact-label">Email us</div>
+                                            <div class="contact-value">info@liaalpg.com</div>
+                                        </div>
+                                    </a>
+                                    <a href="tel:0481-123-4567" class="contact-card">
+                                        <div class="contact-icon icon-green-contact">
+                                            <i data-lucide="phone" style="width: 1.5rem; height: 1.5rem; color: white;"></i>
+                                        </div>
+                                        <div>
+                                            <div class="contact-label">Call us</div>
+                                            <div class="contact-value phone">0481-123-4567</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-border"></div>
+
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="footer-logo-container">
+                    <div class="footer-logo-glow"></div>
+                    <i data-lucide="flame" style="width: 1.5rem; height: 1.5rem; color: white;"></i>
+                </div>
+                <div>
+                    <div class="footer-logo-text">LIAA LPG</div>
+                    <div class="footer-logo-subtitle">Gas Booking System</div>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-copyright">
+                <i data-lucide="star" class="footer-star"></i>
+                <p class="footer-text">© 2025 LIAA LPG Gas Booking System. All rights reserved.</p>
+                <i data-lucide="star" class="footer-star"></i>
+            </div>
+
+            <p class="footer-tagline">Committed to your privacy and security</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Progress bar functionality
+        function updateProgressBar() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            document.getElementById('progressBar').style.width = Math.min(progress, 100) + '%';
+        }
+
+        // Scroll to content function
+        function scrollToContent() {
+            document.getElementById('content').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', updateProgressBar);
+        window.addEventListener('load', updateProgressBar);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.info-card, .section-card, .contact-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Add click animation to buttons
+        document.querySelectorAll('.hero-button, .section-number').forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for scroll animations
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(section);
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+            document.body.style.transition = 'opacity 0.5s ease-in';
+        });
+
+        // Add smooth scrolling behavior for all internal links
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

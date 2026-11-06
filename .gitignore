@@ -1,0 +1,9 @@
+# LIAA LPG Git Ignore
+/logs/*.log
+/backups/*.sql
+.env
+.vscode/settings.json
+node_modules/
+*.tmp
+*.bak
+*~

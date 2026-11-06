@@ -1,0 +1,41 @@
+# LIAA LPG Gas Booking System - Apache Configuration
+# Enable URL rewriting
+RewriteEngine On
+
+# Set the default document to index.php
+DirectoryIndex index.php index.html
+
+# Security headers
+Header always set X-Content-Type-Options nosniff
+Header always set X-Frame-Options DENY
+Header always set X-XSS-Protection "1; mode=block"
+
+# Cache static assets
+<FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg)$">
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+</FilesMatch>
+
+# Protect sensitive files
+<FilesMatch "\.(sql|md|log)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Protect config directory
+<Directory "config">
+    Order allow,deny
+    Deny from all
+</Directory>
+
+# Protect includes directory from direct access
+<Directory "includes">
+    Order allow,deny
+    Deny from all
+</Directory>
+
+# Pretty URLs (optional)
+# Uncomment these lines if you want clean URLs
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^(.*)$ index.php/$1 [QSA,L]

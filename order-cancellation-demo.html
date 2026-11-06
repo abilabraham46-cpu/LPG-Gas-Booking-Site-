@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Cancellation Demo - LIAA LPG System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff6b00, #ff8533);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .demo-section {
+            margin-bottom: 40px;
+        }
+
+        .demo-section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 5px solid #ff6b00;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-card p {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+
+        .demo-orders {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .orders-table th,
+        .orders-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .orders-table th {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            font-weight: 600;
+        }
+
+        .orders-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-pending {
+            background: rgba(255, 176, 133, 0.2);
+            color: #e67e22;
+        }
+
+        .status-confirmed {
+            background: rgba(255, 107, 0, 0.2);
+            color: #ff6b00;
+        }
+
+        .status-processing {
+            background: rgba(255, 165, 0, 0.2);
+            color: #ffa500;
+        }
+
+        .status-cancelled {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+        }
+
+        .btn-cancel {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-cancel:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn-cancel:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .policy-box {
+            background: linear-gradient(135deg, #fff3cd, #ffeeba);
+            border: 1px solid #ffc107;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .policy-box h3 {
+            color: #856404;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .policy-box ul {
+            color: #856404;
+            padding-left: 20px;
+        }
+
+        .policy-box li {
+            margin: 8px 0;
+        }
+
+        .workflow-steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .workflow-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .workflow-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #ff6b00;
+            font-weight: bold;
+        }
+
+        .workflow-step .icon {
+            background: linear-gradient(135deg, #ff6b00, #ff8533);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.5rem;
+        }
+
+        .workflow-step h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .workflow-step p {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .cta-section p {
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b00, #ff8533);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .workflow-steps {
+                flex-direction: column;
+            }
+
+            .workflow-step:not(:last-child)::after {
+                content: '↓';
+                position: static;
+                display: block;
+                margin: 10px 0;
+            }
+
+            .orders-table {
+                font-size: 0.9rem;
+            }
+
+            .orders-table th,
+            .orders-table td {
+                padding: 10px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-fire"></i> Order Cancellation Feature</h1>
+            <p>Enhanced Customer Control for LPG Gas Booking System</p>
+        </header>
+
+        <div class="content">
+            <section class="demo-section">
+                <h2><i class="fas fa-star"></i> Key Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3><i class="fas fa-user-shield"></i> Customer Protection</h3>
+                        <p>Customers can cancel orders until a delivery person accepts them, providing flexibility while maintaining fairness.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><i class="fas fa-truck"></i> Delivery Staff Protection</h3>
+                        <p>Once a delivery person accepts an order, it cannot be cancelled, ensuring they get compensated for their commitment.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><i class="fas fa-shield-alt"></i> Security & Validation</h3>
+                        <p>Multiple security checks ensure customers can only cancel their own orders, with comprehensive validation.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><i class="fas fa-chart-line"></i> Real-time Updates</h3>
+                        <p>Dynamic UI updates show cancellation eligibility in real-time, preventing confusion and errors.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="demo-section">
+                <h2><i class="fas fa-info-circle"></i> Cancellation Policy</h2>
+                <div class="policy-box">
+                    <h3><i class="fas fa-exclamation-triangle"></i> When You Can Cancel</h3>
+                    <ul>
+                        <li><strong>Pending Orders:</strong> Orders that haven't been confirmed by admin yet</li>
+                        <li><strong>Confirmed Orders:</strong> Orders confirmed by admin but no delivery person assigned</li>
+                        <li><strong>Time Limit:</strong> You can cancel until a delivery person accepts your order</li>
+                        <li><strong>Security:</strong> You can only cancel your own orders for security reasons</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="demo-section">
+                <h2><i class="fas fa-cogs"></i> How It Works</h2>
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <div class="icon"><i class="fas fa-shopping-cart"></i></div>
+                        <h4>Place Order</h4>
+                        <p>Customer places LPG cylinder order</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="icon"><i class="fas fa-check"></i></div>
+                        <h4>Admin Confirms</h4>
+                        <p>Admin reviews and confirms the order</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="icon"><i class="fas fa-times"></i></div>
+                        <h4>Cancellation Window</h4>
+                        <p>Customer can cancel during this period</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="icon"><i class="fas fa-user-check"></i></div>
+                        <h4>Delivery Accepted</h4>
+                        <p>Delivery person accepts - no more cancellation</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="demo-section">
+                <h2><i class="fas fa-table"></i> Sample Orders Demo</h2>
+                <div class="demo-orders">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Cylinder Type</th>
+                                <th>Status</th>
+                                <th>Amount</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>#1001</strong></td>
+                                <td>14.2kg Domestic</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>₹949.00</td>
+                                <td>
+                                    <button class="btn-cancel" onclick="alert('Order #1001 can be cancelled!')">
+                                        <i class="fas fa-times"></i> Cancel
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>#1002</strong></td>
+                                <td>19kg Commercial</td>
+                                <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                                <td>₹1,450.00</td>
+                                <td>
+                                    <button class="btn-cancel" onclick="alert('Order #1002 can be cancelled!')">
+                                        <i class="fas fa-times"></i> Cancel
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>#1003</strong></td>
+                                <td>14.2kg Domestic</td>
+                                <td><span class="status-badge status-processing">Processing</span></td>
+                                <td>₹949.00</td>
+                                <td>
+                                    <button class="btn-cancel" disabled onclick="alert('Cannot cancel - delivery person assigned!')">
+                                        <i class="fas fa-ban"></i> Cannot Cancel
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>#1004</strong></td>
+                                <td>5kg Domestic</td>
+                                <td><span class="status-badge status-cancelled">Cancelled</span></td>
+                                <td>₹649.00</td>
+                                <td>
+                                    <span style="color: #6c757d; font-style: italic;">Cancelled</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="demo-section">
+                <h2><i class="fas fa-code"></i> Technical Implementation</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3><i class="fas fa-database"></i> Database Integration</h3>
+                        <p>Seamless integration with existing order and delivery tables, with proper foreign key relationships.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><i class="fas fa-shield-alt"></i> Security Measures</h3>
+                        <p>SQL injection protection, user authentication, authorization checks, and CSRF protection.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><i class="fas fa-mobile-alt"></i> Responsive Design</h3>
+                        <p>Mobile-friendly interface that works perfectly on all devices and screen sizes.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><i class="fas fa-bell"></i> Notification System</h3>
+                        <p>Automatic notifications to admin when orders are cancelled, with detailed reasons.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="cta-section">
+                <h2>Ready to Experience the Feature?</h2>
+                <p>Log in to your customer portal to see the order cancellation feature in action!</p>
+                <a href="customer-auth.php" class="btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Go to Customer Portal
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Demo JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Order Cancellation Demo loaded successfully!');
+            
+            // Add hover effects to feature cards
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Demo functionality for cancel buttons
+            const cancelButtons = document.querySelectorAll('.btn-cancel:not([disabled])');
+            cancelButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const orderRow = this.closest('tr');
+                    const orderId = orderRow.querySelector('td strong').textContent;
+                    const status = orderRow.querySelector('.status-badge').textContent;
+                    
+                    if (confirm(`Are you sure you want to cancel order ${orderId}?\n\nStatus: ${status}\nThis action cannot be undone.`)) {
+                        // Simulate cancellation
+                        orderRow.querySelector('.status-badge').textContent = 'Cancelled';
+                        orderRow.querySelector('.status-badge').className = 'status-badge status-cancelled';
+                        this.outerHTML = '<span style="color: #6c757d; font-style: italic;">Cancelled</span>';
+                        
+                        alert(`Order ${orderId} has been successfully cancelled!`);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1488 @@
+<html>
+<head>
+  <title>LIAA LPG Gas Booking - Safe & Fast Delivery</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fast and reliable LPG gas cylinder booking and delivery service in Kerala. Book online, track delivery, and enjoy 24/7 customer support.">
+  
+  <!-- Icons -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+  
+  <!-- Fonts and CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/enhancements.css">
+  <style>
+    :root {
+      --primary: #ff6b00;
+      --primary-dark: #e05d00;
+      --primary-light: #ff8533;
+      --secondary: #2c3e50;
+      --accent: #3498db;
+      --success: #27ae60;
+      --warning: #f39c12;
+      --danger: #e74c3c;
+      --light: #ecf0f1;
+      --dark: #2c3e50;
+      --white: #ffffff;
+      --shadow: 0 10px 30px rgba(0,0,0,0.1);
+      --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+      --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      --border-radius: 12px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    body.dark-mode {
+      background: var(--light);
+      color: var(--dark);
+    }
+    body.dark-mode header {
+      background: var(--white);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+    body.dark-mode .hero {
+      background: linear-gradient(135deg, #23272f 0%, #181a20 100%);
+    }
+    body.dark-mode .feature-card,
+    body.dark-mode .login-card {
+      background: #23272f;
+      color: #f5f6fa;
+      border: 1px solid rgba(255, 133, 51, 0.1);
+    }
+    body.dark-mode .features {
+      background: #181a20;
+    }
+    body.dark-mode .alert-banner {
+      background: linear-gradient(90deg, #e74c3c, #f1c40f);
+      color: #fff;
+    }
+    body.dark-mode footer {
+      background: #181a20;
+      color: #f5f6fa;
+    }
+    body.dark-mode .footer-section a,
+    body.dark-mode .footer-section p {
+      color: rgba(255,255,255,0.8);
+    }
+    body.dark-mode .footer-section a:hover {
+      color: var(--primary);
+    }
+    body.dark-mode .btn-outline {
+      color: var(--primary);
+      border-color: var(--primary);
+      background: transparent;
+    }
+    body.dark-mode .btn-outline:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+    body.dark-mode .gas-cylinder {
+      background: linear-gradient(145deg, #ff8533, #ffb380);
+      box-shadow: 0 20px 40px rgba(255, 133, 51, 0.3);
+    }
+    body.dark-mode .login-card.admin .login-icon {
+      background: linear-gradient(135deg, #e0e0e0, #23272f);
+    }
+    body.dark-mode .login-card.delivery .login-icon {
+      background: linear-gradient(135deg, #2ecc71, #6ec1e4);
+    }
+    body.dark-mode .login-card .btn {
+      background: var(--primary);
+      color: #fff;
+    }
+    body.dark-mode .login-card .btn:hover {
+      background: var(--primary-dark);
+      background: var(--primary-dark);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 1.2rem 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      transition: var(--transition);
+      border-bottom: 1px solid rgba(255, 107, 0, 0.1);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .logo:hover {
+      transform: translateY(-2px);
+    }
+
+    .logo i {
+      font-size: 2.2rem;
+      margin-right: 0.8rem;
+      animation: flame 2s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 8px rgba(255, 107, 0, 0.3));
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    nav {
+      position: relative;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(15px);
+      padding: 0.8rem 1.2rem;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 107, 0, 0.15);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    nav a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.8rem 1.5rem;
+      border-radius: 12px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      background: transparent;
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.1), transparent);
+      transition: var(--transition);
+      z-index: -1;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+      border-radius: 2px;
+      z-index: 1;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+      background: rgba(255, 107, 0, 0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 107, 0, 0.15);
+    }
+
+    nav a:hover::before {
+      left: 100%;
+    }
+
+    nav a:hover::after {
+      width: 80%;
+    }
+
+    nav a.active {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      box-shadow: 0 8px 25px rgba(255, 107, 0, 0.3);
+    }
+
+    nav a.active::after {
+      display: none;
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border: none;
+      font-size: 1.3rem;
+      color: white;
+      cursor: pointer;
+      transition: var(--transition);
+      padding: 0.8rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+    }
+
+    .mobile-menu-toggle:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--gradient);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('images/1708150553_lpg-gas-cylinder-2323-1-2023-11-2024-02-25357886f486bddf94e838f8ab03b846.webp');
+            opacity: 0.4;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: heroFloat 20s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes heroFloat {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(-30px, -30px) rotate(120deg); }
+      66% { transform: translate(30px, 20px) rotate(240deg); }
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+       }
+
+    .hero-content h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      animation: slideInLeft 1s ease-out;
+      text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 2.5rem;
+      animation: slideInLeft 1s ease-out 0.2s both;
+      line-height: 1.7;
+      max-width: 600px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: slideInLeft 1s ease-out 0.4s both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: var(--white);
+      box-shadow: 0 8px 32px rgba(255, 107, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: var(--transition);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 48px rgba(255, 107, 0, 0.4);
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .btn-outline:hover {
+      background: var(--white);
+      color: var(--primary);
+      border-color: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-visual {
+      display: none;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes glowPulse {
+      0% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+      100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.05); opacity: 1; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Alert Banner */
+    .alert-banner {
+      background: linear-gradient(90deg, var(--danger), var(--warning), var(--primary));
+      color: var(--white);
+      padding: 1.25rem;
+      text-align: center;
+      font-weight: 600;
+      animation: slideDown 0.5s ease-out;
+      position: relative;
+      overflow: hidden;
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+    }
+
+    .alert-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: shine 4s infinite;
+    }
+
+    .alert-banner i {
+      margin-right: 0.75rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes shine {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+
+    /* Features Section */
+    .features {
+      padding: 5rem 0;
+      background: var(--light);
+    }
+
+    .features-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .section-title p {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 107, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 107, 0, 0.02) 0%, rgba(255, 133, 51, 0.05) 100%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(255, 107, 0, 0.15);
+      border-color: var(--primary);
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-icon {
+      width: 90px;
+      height: 90px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2.2rem;
+      color: var(--white);
+      position: relative;
+      box-shadow: 0 8px 30px rgba(255, 107, 0, 0.3);
+      transition: var(--transition);
+    }
+
+    .feature-icon::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: var(--gradient);
+      border-radius: 50%;
+      opacity: 0;
+      transition: var(--transition);
+      z-index: -1;
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .feature-card:hover .feature-icon::before {
+      opacity: 0.3;
+      animation: pulse 2s infinite;
+    }
+
+    .feature-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .feature-card p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Login Section */
+    .login-section {
+      padding: 5rem 0;
+      background: var(--white);
+    }
+
+    .login-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .login-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .login-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+      transition: var(--transition);
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: var(--gradient);
+      transition: var(--transition);
+    }
+
+    .login-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 107, 0, 0.02) 0%, rgba(255, 133, 51, 0.05) 100%);
+      opacity: 0;
+      transition: var(--transition);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .login-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 70px rgba(255, 107, 0, 0.15);
+      border-color: rgba(255, 107, 0, 0.2);
+    }
+
+    .login-card:hover::after {
+      opacity: 1;
+    }
+
+    .login-card.admin::before {
+      background: linear-gradient(135deg, var(--secondary), var(--dark));
+    }
+
+    .login-card.delivery::before {
+      background: linear-gradient(135deg, var(--success), var(--accent));
+    }
+
+    .login-icon {
+      width: 110px;
+      height: 110px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      font-size: 2.8rem;
+      color: var(--white);
+      position: relative;
+      box-shadow: 0 10px 40px rgba(255, 107, 0, 0.3);
+      transition: var(--transition);
+    }
+
+    .login-icon::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      right: -8px;
+      bottom: -8px;
+      background: var(--gradient);
+      border-radius: 50%;
+      opacity: 0;
+      transition: var(--transition);
+      z-index: -1;
+    }
+
+    .login-card:hover .login-icon {
+      transform: scale(1.05) rotate(-5deg);
+    }
+
+    .login-card:hover .login-icon::before {
+      opacity: 0.2;
+      animation: pulse 2s infinite;
+    }
+
+    .login-card.admin .login-icon {
+      background: linear-gradient(135deg, var(--secondary), var(--dark));
+    }
+
+    .login-card.delivery .login-icon {
+      background: linear-gradient(135deg, var(--success), var(--accent));
+    }
+
+    .login-card h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .login-card p {
+      color: #666;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .login-card .btn {
+      width: 100%;
+      justify-content: center;
+      background: var(--gradient) !important;
+      color: var(--white) !important;
+      border: none !important;
+      padding: 1.2rem 2rem !important;
+      border-radius: 12px !important;
+      font-weight: 600 !important;
+      font-size: 1.1rem !important;
+      text-decoration: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 0.75rem !important;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 8px 25px rgba(255, 107, 0, 0.3) !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+      cursor: pointer !important;
+      position: relative !important;
+      overflow: visible !important;
+      margin-top: 0.5rem !important;
+      z-index: 10 !important;
+      pointer-events: auto !important;
+    }
+
+    .login-card .btn:hover {
+      background: var(--primary-dark) !important;
+      transform: translateY(-3px) scale(1.02) !important;
+      box-shadow: 0 12px 35px rgba(255, 107, 0, 0.4) !important;
+    }
+
+    .login-card .btn:active {
+      transform: translateY(-1px) scale(1.01) !important;
+      box-shadow: 0 6px 20px rgba(255, 107, 0, 0.35) !important;
+    }
+
+    .login-card .btn i {
+      font-size: 1.2rem !important;
+      margin-right: 0.5rem !important;
+    }
+
+    /* Specific styling for different login types */
+    .login-card.admin .btn {
+      background: linear-gradient(135deg, var(--secondary), var(--dark)) !important;
+      box-shadow: 0 8px 25px rgba(44, 62, 80, 0.3) !important;
+    }
+
+    .login-card.admin .btn:hover {
+      background: linear-gradient(135deg, var(--dark), #1a252f) !important;
+      box-shadow: 0 12px 35px rgba(44, 62, 80, 0.4) !important;
+    }
+
+    .login-card.delivery .btn {
+      background: linear-gradient(135deg, var(--success), var(--accent)) !important;
+      box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3) !important;
+    }
+
+    .login-card.delivery .btn:hover {
+      background: linear-gradient(135deg, #229954, #2980b9) !important;
+      box-shadow: 0 12px 35px rgba(39, 174, 96, 0.4) !important;
+    }
+
+    .login-card .btn:focus {
+      outline: 3px solid rgba(255, 107, 0, 0.3) !important;
+      outline-offset: 2px !important;
+    }
+
+    .register-link {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .register-link a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      z-index: 10;
+      pointer-events: auto;
+      display: inline-block;
+      padding: 0.3rem 0.5rem;
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+      background: rgba(255, 107, 0, 0.1);
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: var(--white);
+      padding: 3rem 0 1rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      line-height: 1.6;
+    }
+
+    .footer-section a:hover {
+      color: var(--primary);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1rem;
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 0 1rem;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 0 1rem;
+        gap: 2rem;
+        background-position: center bottom;
+        background-size: 200px;
+        padding-bottom: 250px;
+      }
+
+      .hero-content h1 {
+        font-size: 2.8rem;
+      }
+
+      .hero-content p {
+        font-size: 1.1rem;
+      }
+
+      .login-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .features-container,
+      .login-container,
+      .footer-container {
+        padding: 0 1rem;
+      }
+
+      nav ul {
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        padding: 1rem 1.5rem;
+        border-radius: 20px;
+        margin-right: 1rem;
+      }
+
+      nav a {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+        border-radius: 10px;
+      }
+
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      nav ul {
+        position: fixed;
+        top: 85px;
+        left: -100%;
+        width: calc(100% - 2rem);
+        margin: 0 1rem;
+        height: auto;
+        max-height: calc(100vh - 100px);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(30px);
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        padding: 2rem 1.5rem;
+        transition: var(--transition);
+        z-index: 1000;
+        gap: 0.5rem;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 107, 0, 0.15);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      nav ul.active {
+        left: 1rem;
+      }
+
+      nav ul li {
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Reset desktop nav styles for mobile */
+      nav ul li a {
+        display: block !important;
+        width: 100% !important;
+        padding: 1.2rem 1.5rem !important;
+        margin: 0.3rem 0 !important;
+        border-radius: 12px !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        background: rgba(255, 107, 0, 0.05) !important;
+        border: 1px solid rgba(255, 107, 0, 0.1) !important;
+        position: relative !important;
+        overflow: visible !important;
+        color: var(--dark) !important;
+        box-shadow: none !important;
+        transform: none !important;
+      }
+
+      /* Mobile nav pseudo-elements */
+      nav ul li a::before {
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: -100% !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.1), transparent) !important;
+        transition: var(--transition) !important;
+        z-index: -1 !important;
+      }
+
+      nav ul li a::after {
+        content: '' !important;
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 50% !important;
+        width: 0 !important;
+        height: 3px !important;
+        background: linear-gradient(135deg, var(--primary), var(--primary-light)) !important;
+        transition: all 0.3s ease !important;
+        transform: translateX(-50%) !important;
+        border-radius: 2px !important;
+        z-index: 1 !important;
+      }
+
+      /* Mobile nav hover effects */
+      nav ul li a:hover {
+        background: linear-gradient(135deg, var(--primary), var(--primary-light)) !important;
+        color: white !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 25px rgba(255, 107, 0, 0.3) !important;
+      }
+
+      nav ul li a:hover::before {
+        left: 100% !important;
+      }
+
+      nav ul li a:hover::after {
+        width: 80% !important;
+      }
+
+      /* Mobile nav active state */
+      nav ul li a.active {
+        background: linear-gradient(135deg, var(--primary), var(--primary-light)) !important;
+        color: white !important;
+        box-shadow: 0 8px 25px rgba(255, 107, 0, 0.3) !important;
+      }
+
+      nav ul li a.active::after {
+        display: none !important;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+
+      .login-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .feature-card {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    /* Loading Animation */
+    .loading {
+      opacity: 0;
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Additional button enhancement */
+    .login-card .btn-primary {
+      background: var(--gradient) !important;
+      border: 2px solid transparent !important;
+      background-clip: padding-box !important;
+    }
+
+    .login-card.admin .btn-primary {
+      background: linear-gradient(135deg, var(--secondary), var(--dark)) !important;
+    }
+
+    .login-card.delivery .btn-primary {
+      background: linear-gradient(135deg, var(--success), var(--accent)) !important;
+    }
+  </style>
+</head>
+<body>
+  <header class="loading">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <i class="fas fa-fire"></i>
+        LIAA LPG
+      </a>
+      <nav>
+        <ul>
+          <li><a href="Home.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="customer-auth.php">Book Now</a></li>
+        </ul>
+        <div class="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+      <!-- Remove theme toggle button -->
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>Safe & Fast LPG Delivery</h1>
+        <p>Experience hassle-free gas cylinder booking with LIAA. Quick delivery, reliable service, and complete safety guaranteed for your home and business needs.</p>
+        <div class="hero-buttons">
+          <a href="customer-auth.php" class="btn btn-primary">
+            <i class="fas fa-user"></i>
+            Book Now
+          </a>
+          <a href="about.html" class="btn btn-outline">
+            <i class="fas fa-info-circle"></i>
+            Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="alert-banner">
+    <i class="fas fa-exclamation-triangle"></i>
+    USE YOUR LPG CYLINDER CAREFULLY! | WE ARE HERE TO HELP YOU | LIAA GAS AGENCY PROVIDES QUICK & SAFE DELIVERY
+  </div>
+
+  <section class="features">
+    <div class="features-container">
+      <div class="section-title">
+        <h2>Why Choose LIAA?</h2>
+        <p>We provide the best LPG gas delivery service with safety, reliability, and customer satisfaction as our top priorities.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shipping-fast"></i>
+          </div>
+          <h3>Fast Delivery</h3>
+          <p>Get your gas cylinder delivered within 2-4 hours of booking. Emergency delivery available 24/7.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>100% Safe</h3>
+          <p>All our cylinders undergo rigorous safety checks. Certified delivery personnel ensure secure handling.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Easy Booking</h3>
+          <p>Book your cylinder online in just a few clicks. Track your order in real-time through our platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="login-section">
+    <div class="login-container">
+      <div class="section-title">
+        <h2>Access Your Account</h2>
+        <p>Choose your login type to access your personalized dashboard and manage your LPG services.</p>
+      </div>
+      <div class="login-grid">
+        <div class="login-card admin">
+          <div class="login-icon">
+            <i class="fas fa-user-shield"></i>
+          </div>
+          <h2>Admin Portal</h2>
+          <p>Manage users, track deliveries, oversee system operations, and monitor business analytics.</p>
+          <a href="admin-portal.php" class="btn btn-primary">
+            <i class="fas fa-sign-in-alt"></i>
+            Admin Login
+          </a>
+        </div>
+        
+        <div class="login-card customer">
+          <div class="login-icon">
+            <i class="fas fa-user"></i>
+          </div>
+          <h2>Customer Portal</h2>
+          <p>Book your gas cylinder, track orders, manage your account, and view delivery history.</p>
+          <a href="customer-auth.php" class="btn btn-primary">
+            <i class="fas fa-sign-in-alt"></i>
+            Customer Login
+          </a>
+          <div class="register-link">
+            New customer? <a href="customer-register.php">Register here</a>
+          </div>
+        </div>
+        
+        <div class="login-card delivery">
+          <div class="login-icon">
+            <i class="fas fa-truck"></i>
+          </div>
+          <h2>Delivery Portal</h2>
+          <p>View assigned deliveries, update delivery status, manage your schedule, and track performance.</p>
+          <a href="delivery-portal.php" class="btn btn-primary">
+            <i class="fas fa-sign-in-alt"></i>
+            Delivery Login
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>LIAA LPG Gas</h3>
+          <p>Your trusted partner for safe and reliable LPG gas delivery. Serving customers with excellence since 2020.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <p><a href="about.html">About Us</a></p>
+          <p><a href="contact.html">Contact</a></p>
+          <p><a href="privacypolicy.html">Privacy Policy</a></p>
+          <p><a href="termsofservice.html">Terms of Service</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <p><i class="fas fa-phone"></i> 24/7 Support: 0481-123-4567</p>
+          <p><i class="fas fa-envelope"></i> info@liaalpg.com</p>
+          <p><i class="fas fa-map-marker-alt"></i>Logos Junction,Kottayam,Kerala</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 LIAA LPG Gas Booking System. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Add loading animation
+    document.addEventListener('DOMContentLoaded', function() {
+      const elements = document.querySelectorAll('.loading');
+      elements.forEach(el => {
+        el.classList.add('loaded');
+      });
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Header scroll effect with enhanced glassmorphism
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(255, 255, 255, 0.9)';
+        header.style.backdropFilter = 'blur(30px)';
+        header.style.boxShadow = '0 10px 40px rgba(0,0,0,0.15)';
+      } else {
+        header.style.background = 'rgba(255, 255, 255, 0.95)';
+        header.style.backdropFilter = 'blur(20px)';
+        header.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)';
+      }
+    });
+
+    // Add intersection observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe feature cards and login cards
+    document.querySelectorAll('.feature-card, .login-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'all 0.6s ease-out';
+      observer.observe(card);
+    });
+
+    // Add parallax effect to hero background
+    window.addEventListener('scroll', function() {
+      const heroContainer = document.querySelector('.hero-container');
+      const scrolled = window.pageYOffset;
+      const rate = scrolled * -0.1;
+      
+      if (heroContainer) {
+        heroContainer.style.backgroundPosition = `right ${rate}px center`;
+      }
+    });
+
+    // Enhanced hover effects for buttons
+    document.querySelectorAll('.btn').forEach(btn => {
+      // Skip login card buttons to avoid conflicts
+      if (!btn.closest('.login-card')) {
+        btn.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-3px) scale(1.02)';
+        });
+        
+        btn.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0) scale(1)';
+        });
+      }
+    });
+
+    // Ensure login buttons are clickable
+    document.querySelectorAll('.login-card .btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        // Ensure the link works
+        const href = this.getAttribute('href');
+        if (href && href !== '#') {
+          window.location.href = href;
+        }
+      });
+    });
+
+    // Ensure register links are clickable
+    document.querySelectorAll('.register-link a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const href = this.getAttribute('href');
+        if (href && href !== '#') {
+          console.log('Navigating to:', href); // Debug log
+          window.location.href = href;
+        }
+      });
+      
+      // Add hover effect
+      link.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-1px)';
+        this.style.backgroundColor = 'rgba(255, 107, 0, 0.1)';
+      });
+      
+      link.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+        this.style.backgroundColor = 'transparent';
+      });
+    });
+
+    // Mobile menu toggle functionality
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navUl = document.querySelector('nav ul');
+
+    if (mobileMenuToggle && navUl) {
+      mobileMenuToggle.addEventListener('click', function() {
+        navUl.classList.toggle('active');
+        const icon = this.querySelector('i');
+        if (navUl.classList.contains('active')) {
+          icon.classList.replace('fa-bars', 'fa-times');
+        } else {
+          icon.classList.replace('fa-times', 'fa-bars');
+        }
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('click', function() {
+          navUl.classList.remove('active');
+          const icon = mobileMenuToggle.querySelector('i');
+          icon.classList.replace('fa-times', 'fa-bars');
+        });
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('nav')) {
+          navUl.classList.remove('active');
+          const icon = mobileMenuToggle.querySelector('i');
+          icon.classList.replace('fa-times', 'fa-bars');
+        }
+      });
+    }
+
+    // Navigation active state management
+    function setActiveNavigation() {
+      const currentPath = window.location.pathname;
+      const currentPage = currentPath.split('/').pop() || 'Home.html';
+      const navLinks = document.querySelectorAll('nav ul li a');
+      
+      // Remove active class from all links
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      // Add active class to current page link
+      navLinks.forEach(link => {
+        const linkHref = link.getAttribute('href');
+        const linkPage = linkHref.split('/').pop();
+        
+        if (linkPage === currentPage || 
+            (currentPage === '' && linkPage === 'Home.html') ||
+            (currentPage === 'index.html' && linkPage === 'Home.html')) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    // Set active navigation on page load
+    document.addEventListener('DOMContentLoaded', setActiveNavigation);
+    
+    // Navigation link click handler with proper indication
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        // Remove active from all links
+        document.querySelectorAll('nav ul li a').forEach(l => l.classList.remove('active'));
+        
+        // Add active to clicked link
+        this.classList.add('active');
+        
+        // Close mobile menu if open
+        if (navUl && navUl.classList.contains('active')) {
+          navUl.classList.remove('active');
+          if (mobileMenuToggle) {
+            const icon = mobileMenuToggle.querySelector('i');
+            icon.classList.replace('fa-times', 'fa-bars');
+          }
+        }
+      });
+    });
+
+    // Fix navigation indicator z-index issues
+    function fixNavigationIndicators() {
+      const navLinks = document.querySelectorAll('nav a');
+      navLinks.forEach(link => {
+        // Ensure proper stacking context
+        link.style.isolation = 'isolate';
+        
+        // Fix pseudo-element positioning
+        const computedStyle = window.getComputedStyle(link, '::after');
+        if (computedStyle.position === 'absolute') {
+          link.style.position = 'relative';
+        }
+      });
+    }
+
+    // Call fix on load and resize
+    window.addEventListener('load', fixNavigationIndicators);
+    window.addEventListener('resize', fixNavigationIndicators);
+  </script>
+</body>
+</html>

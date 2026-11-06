@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Payment Setup Guide - LPG Delivery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff6b00;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --gpay: #4285f4;
+            --dark: #1a1a1a;
+            --warm-gray: #ecf0f1;
+            --glass-effect: rgba(255, 255, 255, 0.15);
+            --shadow-light: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --border-radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, #2c3e50 100%);
+            color: var(--warm-gray);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section {
+            background: var(--glass-effect);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-light);
+        }
+
+        .section h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .step {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, var(--primary), #e67e22);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .highlight {
+            background: rgba(255, 107, 0, 0.2);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .warning-box {
+            background: rgba(243, 156, 18, 0.1);
+            border: 1px solid rgba(243, 156, 18, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: var(--warning);
+        }
+
+        .success-box {
+            background: rgba(39, 174, 96, 0.1);
+            border: 1px solid rgba(39, 174, 96, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: var(--success);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list i {
+            color: var(--success);
+            width: 20px;
+        }
+
+        .demo-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .demo-link {
+            background: linear-gradient(135deg, var(--primary), #e67e22);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .demo-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 0, 0.3);
+        }
+
+        .demo-link i {
+            font-size: 2rem;
+        }
+
+        .demo-link.gpay {
+            background: linear-gradient(135deg, var(--gpay), #3367d6);
+        }
+
+        .demo-link.gpay:hover {
+            box-shadow: 0 8px 25px rgba(66, 133, 244, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fab fa-google-pay"></i> Real Payment Setup</h1>
+            <p>Configure your LPG delivery system to receive real payments in your Google Pay account</p>
+        </div>
+
+        <!-- Overview -->
+        <div class="section">
+            <h2><i class="fas fa-star"></i> What You Get</h2>
+            <ul class="feature-list">
+                <li><i class="fas fa-check"></i> Customers pay directly to your Google Pay UPI ID</li>
+                <li><i class="fas fa-check"></i> Real money transfers (not demo/test payments)</li>
+                <li><i class="fas fa-check"></i> Manual payment verification for security</li>
+                <li><i class="fas fa-check"></i> Admin panel to approve/reject transactions</li>
+                <li><i class="fas fa-check"></i> Automatic order status updates after verification</li>
+                <li><i class="fas fa-check"></i> Support for all UPI apps (GPay, PhonePe, Paytm, etc.)</li>
+                <li><i class="fas fa-check"></i> Complete transaction history</li>
+                <li><i class="fas fa-check"></i> Mobile-responsive payment interface</li>
+            </ul>
+        </div>
+
+        <!-- Step 1: Get Your UPI ID -->
+        <div class="section">
+            <h2><i class="fas fa-mobile-alt"></i> Setup Instructions</h2>
+            
+            <div class="step">
+                <div class="step-number">Step 1</div>
+                <h3>Get Your Google Pay UPI ID</h3>
+                <p>First, you need to find your Google Pay UPI ID:</p>
+                <ol style="margin: 1rem 0 1rem 1.5rem; line-height: 1.8;">
+                    <li>Open Google Pay app on your phone</li>
+                    <li>Tap your profile picture (top right)</li>
+                    <li>Tap "Bank account"</li>
+                    <li>Your UPI ID will be shown (like: yourname@okaxis, yourname@ybl)</li>
+                    <li>Note it down - you'll need this for Step 2</li>
+                </ol>
+                
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>Important:</strong> Make sure this UPI ID is active and can receive payments.
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">Step 2</div>
+                <h3>Update Payment Configuration</h3>
+                <p>Edit the Google Pay payment file with your real UPI ID:</p>
+                
+                <div class="code-block">
+// File: payments/gpay_payment.php
+// Line 24-25: Replace with your actual details
+
+<span class="highlight">$merchant_upi_id = "your-actual-upi@okaxis";</span>  // YOUR REAL UPI ID HERE
+<span class="highlight">$merchant_name = "Your Business Name";</span>        // YOUR BUSINESS NAME
+                </div>
+                
+                <p><strong>Example:</strong></p>
+                <div class="code-block">
+$merchant_upi_id = "johnsmith@paytm";
+$merchant_name = "John's LPG Delivery Service";
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">Step 3</div>
+                <h3>Test the Payment System</h3>
+                <p>Test the complete flow:</p>
+                <ol style="margin: 1rem 0 1rem 1.5rem; line-height: 1.8;">
+                    <li>Make a test order in the customer portal</li>
+                    <li>Click "Pay Now" and select "Google Pay"</li>
+                    <li>It will open Google Pay with your UPI ID as recipient</li>
+                    <li>Complete a small test payment (like ₹1)</li>
+                    <li>Submit the transaction ID on the payment page</li>
+                    <li>Go to admin panel to verify the payment</li>
+                </ol>
+            </div>
+
+            <div class="step">
+                <div class="step-number">Step 4</div>
+                <h3>Verify Payments (Admin)</h3>
+                <p>Use the admin panel to verify real payments:</p>
+                <ul style="margin: 1rem 0 1rem 1.5rem; line-height: 1.8;">
+                    <li>Access: <strong>admin/payment-verification.php</strong></li>
+                    <li>Check your Google Pay for incoming payments</li>
+                    <li>Match transaction IDs with payments received</li>
+                    <li>Click "Verify" to approve or "Reject" to decline</li>
+                    <li>Orders automatically update when verified</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Payment Flow -->
+        <div class="section">
+            <h2><i class="fas fa-route"></i> How It Works</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
+                    <i class="fas fa-shopping-cart" style="font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;"></i>
+                    <h4>1. Customer Orders</h4>
+                    <p>Customer places LPG order</p>
+                </div>
+                
+                <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
+                    <i class="fab fa-google-pay" style="font-size: 2rem; color: var(--gpay); margin-bottom: 0.5rem;"></i>
+                    <h4>2. Google Pay</h4>
+                    <p>Customer pays to your UPI ID</p>
+                </div>
+                
+                <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
+                    <i class="fas fa-shield-check" style="font-size: 2rem; color: var(--success); margin-bottom: 0.5rem;"></i>
+                    <h4>3. You Verify</h4>
+                    <p>Admin verifies payment received</p>
+                </div>
+                
+                <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
+                    <i class="fas fa-truck" style="font-size: 2rem; color: var(--warning); margin-bottom: 0.5rem;"></i>
+                    <h4>4. Auto Delivery</h4>
+                    <p>Order processes automatically</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security -->
+        <div class="section">
+            <h2><i class="fas fa-shield-alt"></i> Security Features</h2>
+            <ul class="feature-list">
+                <li><i class="fas fa-check"></i> Manual verification prevents fraud</li>
+                <li><i class="fas fa-check"></i> Transaction ID matching for accuracy</li>
+                <li><i class="fas fa-check"></i> Admin approval required for all payments</li>
+                <li><i class="fas fa-check"></i> Complete audit trail of all transactions</li>
+                <li><i class="fas fa-check"></i> Customer authentication required</li>
+                <li><i class="fas fa-check"></i> UPI app security (Google Pay, PhonePe, etc.)</li>
+            </ul>
+        </div>
+
+        <!-- Test Links -->
+        <div class="section">
+            <h2><i class="fas fa-play"></i> Test Your Setup</h2>
+            <p>Use these links to test your real payment system:</p>
+            
+            <div class="demo-links">
+                <a href="customer-portal.php" class="demo-link">
+                    <i class="fas fa-user"></i>
+                    <strong>Customer Portal</strong>
+                    <small>Place order and test payment</small>
+                </a>
+                
+                <a href="payments/gpay_payment.php?order_id=1" class="demo-link gpay">
+                    <i class="fab fa-google-pay"></i>
+                    <strong>Google Pay Test</strong>
+                    <small>Test the payment flow</small>
+                </a>
+                
+                <a href="admin/payment-verification.php" class="demo-link">
+                    <i class="fas fa-shield-check"></i>
+                    <strong>Admin Verification</strong>
+                    <small>Verify incoming payments</small>
+                </a>
+            </div>
+        </div>
+
+        <!-- Final Note -->
+        <div class="success-box">
+            <h3 style="margin-bottom: 1rem;"><i class="fas fa-rocket"></i> You're All Set!</h3>
+            <p><strong>Your LPG delivery system is now configured to receive real payments!</strong></p>
+            <p style="margin-top: 0.5rem;">Just update your UPI ID in Step 2 above, and customers will be able to pay directly to your Google Pay account. All payments will be verified by you before orders are processed.</p>
+        </div>
+    </div>
+</body>
+</html>
